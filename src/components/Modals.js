@@ -2,11 +2,13 @@ import React from "react";
 import { useModal } from "../hooks/useModal";
 import ContactForm from "./ContactForm";
 import Modal from "./Modal";
+import ModalPortal from "./ModalPortal";
 
 const Modals = () => {
   const [isOpenModal1, openModal1, closeModal1] = useModal(false);
   const [isOpenModal2, openModal2, closeModal2] = useModal(false);
   const [isOpenContact, openModalContact, closeModalContact] = useModal(false);
+  const [isOpenPortal, openModalPortal, closeModalPortal] = useModal(false);
 
   return (
     <div>
@@ -32,6 +34,15 @@ const Modals = () => {
       <Modal isOpen={isOpenContact} closeModal={closeModalContact}>
         <ContactForm />
       </Modal>
+      <button onClick={openModalPortal}>Modal en Portal</button>
+      <ModalPortal isOpen={isOpenPortal} closeModal={closeModalPortal}>
+        <h3>Modal en Portal</h3>
+        <p>
+          Este el contenido de un portal que carga en un nodo diferente al de la
+          APP React gracias a los portales
+        </p>
+        <img src="https://placeimg.com/400/400/tech" alt="Tech" />
+      </ModalPortal>
     </div>
   );
 };
